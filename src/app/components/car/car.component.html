@@ -1,0 +1,22 @@
+<div *ngIf="dataLoaded == false" class="spinner-border text-success" role="status">
+    <span class="visually-hidden"></span>
+</div>
+<tr *ngFor = "let carImagesDetail of carImagesDetails">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div click="" href="#" routerLink="cardetails/{{carImagesDetail.carId}}" class="row g-0">
+          <div class="col-md-4">
+            <tr *ngFor = "let img of carImagesDetail.carImages">
+              <img  src="{{imageBasePath}}{{img.imagePath}}" class="card-img-top" alt="..." width="100" height="200">
+            </tr>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{carImagesDetail.carName}}</h5>
+              <p class="card-text">{{carImagesDetail.description}}</p>
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+</tr>
+<!-- cardetails/{{carImagesDetail.carId}} -->

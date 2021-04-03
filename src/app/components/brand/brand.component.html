@@ -1,0 +1,7 @@
+<ul class="list-group">
+  <a class="list-group-item list-group-item-secondary"> Markalar</a>
+  <a (click)="getAllClickOn()" href="#" [class]="getAllClass()" > Tüm Ürünler</a>
+  <a (click)="setCurrentBrand(brand)" href="#" routerLink = "cardetails/brand/{{brand.id}}"
+  [class]="setCurrentBrandClass(brand)" *ngFor="let brand of brands">{{brand.name}}</a>
+</ul>
+

@@ -1,0 +1,6 @@
+<ul class="list-group">
+    <a class="list-group-item list-group-item-secondary"> Renkler</a>
+    <a (click)="getAllCarsClick()"href="#"[class]="getAllCars()">Tüm Ürünler</a>
+    <a (click)="setCurrentColor(color)" href="#" routerLink = "cardetails/color/{{color.id}}"
+    [class]="setCurrentColorClass(color)" *ngFor="let color of colors">{{color.name}}</a>
+</ul>
