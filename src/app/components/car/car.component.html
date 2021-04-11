@@ -1,9 +1,28 @@
 <div *ngIf="dataLoaded == false" class="spinner-border text-success" role="status">
     <span class="visually-hidden"></span>
 </div>
-<tr *ngFor = "let carImagesDetail of carImagesDetails">
+
+<div class="input-group mb-3">
+  <span for="filterText" class="input-group-text" id="basic-addon1">Araba</span>
+  <input type="text" [(ngModel)] = "filterText" class="form-control" id="filterText"
+  placeholder="Araba İsmi Giriniz" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group mb-3">
+  <span for="filterTextForColor" class="input-group-text" id="basic-addon1">Renk</span>
+  <input type="text" [(ngModel)] = "filterTextForColor" class="form-control" id="filterTextForColor"
+  placeholder="Renk Giriniz" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group mb-3">
+  <span for="filterTextForBrand" class="input-group-text" id="basic-addon1">Marka</span>
+  <input type="text" [(ngModel)] = "filterTextForBrand" class="form-control" id="filterTextForBrand"
+  placeholder="Marka Giriniz" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+<tr *ngFor = "let carImagesDetail of carImagesDetails | filterText:filterText |filterForColorPipe:filterTextForColor|filterForBrandPipe:filterTextForBrand">
     <div class="card mb-3" style="max-width: 540px;">
-        <div click="" href="#" routerLink="cardetails/{{carImagesDetail.carId}}" class="row g-0">
+         <div click="" [routerLink]="['/cardetails',carImagesDetail.carId]" class="row g-0"> <!--En son bir arabaya tıklandıgında gidilecek yeri cardetails/:carId yeri yapmaya calısıyordum -->
           <div class="col-md-4">
             <tr *ngFor = "let img of carImagesDetail.carImages">
               <img  src="{{imageBasePath}}{{img.imagePath}}" class="card-img-top" alt="..." width="100" height="200">
@@ -19,4 +38,5 @@
         </div>
       </div>
 </tr>
+
 <!-- cardetails/{{carImagesDetail.carId}} -->

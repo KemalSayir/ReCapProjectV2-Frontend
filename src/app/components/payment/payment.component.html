@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <!-- <div class="col-md-3">
+        </div> -->
+        <div class="col-md-8">
+            <div class="card text-center">
+                <div class="card-header">
+                  Payment
+                </div>
+                <div class="card-body">
+                  
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">İsminiz</span>
+                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                  
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Kart Numaranız</span>
+                        <input type="number" class="form-control" [(ngModel)]="cardNo" aria-label="cardId" aria-describedby="basic-addon1">
+                    </div>
+                  
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Son Kullanma Tarihi</span>
+                        <input type="text" class="form-control" [(ngModel)]="lastDateOfUse" aria-label="lastDateOfUse" aria-describedby="basic-addon1">
+                    </div>
+                  
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Cvv</span>
+                        <input type="text" class="form-control" [(ngModel)]="cvv" aria-label="cvv" aria-describedby="basic-addon1">
+                    </div>
+                  
+                  <a (click)="pay()" style="width:100%;" class="btn btn-success">Öde</a>
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>
+

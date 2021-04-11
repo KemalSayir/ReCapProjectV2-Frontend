@@ -1,18 +1,41 @@
-<table class="table">
-<thead>
-    <tr>
-        <th>Id</th>
-        <th>CarId</th>
-        <th>CustomerId</th>
-        <th>Kiralanma Tarihi</th>
-        <th>Geri Getirme Tarihi</th>
-    </tr>
-</thead>
-<tr *ngFor = "let rental of rentals">
-    <td>{{rental.id}}</td>
-    <td>{{rental.carId}}</td>
-    <td>{{rental.customerId}}</td>
-    <td>{{rental.rentDate}}</td>
-    <td>{{rental.returnDate}}</td>
-</tr>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Müşteri No</span>
+            <input type="text" class="form-control" [(ngModel)]="customerId" placeholder="Müşteri no" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon2">Araç Numarası</span>
+            <span class="input-group-text" id="basic-addon2">{{currentCarId}}</span>
+            <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+          </div>
+          <!-- Calenders -->
+          <div class="input-group mb-3" >
+            <span class="input-group-text">Başlangıç Tarihi</span>
+            <input type="date" class="form-control" [(ngModel)]="firstDay" id="firstDay" name="firstDay">
+          </div>
+          <div class="input-group mb-3" data-provide="datepicker">
+            <span class="input-group-text">Bitiş Tarihi</span>
+            <input type="date" class="form-control" [(ngModel)]="lastDay" id="lastDay" name="lastDay">
+          </div>
+          <!-- ------ -->
+          <div class="container">
+            <div class="row">
+              <div class="col-md-5">
+              </div>
+              <div class="col-md-12">
+                <div class="card">
+                  <button (click)="hire()"type="button" [routerLink]="['/payment',currentCarId]" class="btn btn-info">Kirala</button>
+                </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

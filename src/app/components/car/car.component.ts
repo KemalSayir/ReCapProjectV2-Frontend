@@ -13,6 +13,9 @@ export class CarComponent implements OnInit {
   dataLoaded = false;
   cars:Car[] = [];
   carImagesDetails:CarImagesDetail[]=[];
+  filterText="";
+  filterTextForColor="";
+  filterTextForBrand="";
   imageBasePath="https://localhost:44393";
 
   constructor(private carService:CarService,private activatedRoute:ActivatedRoute) { }
@@ -23,8 +26,12 @@ export class CarComponent implements OnInit {
         this.getCarImagesDetailByBrandId(params["brandId"]);
       }else if(params["colorId"]){
         this.getCarImagesDetailByColorId(params["colorId"])
+      }else if(params["currentBrand"] && params["currentColor"]){
+        this.getCarImagesDetailByColorIdAndBrandId(params["currentBrand"],params["currentColor"]);
+        console.log('belirtilene göre getirdi.')
       }else{
         this.getCarImagesDetails();
+        console.log('hepsini getirdi.')
       }
     })
   }
@@ -44,6 +51,12 @@ export class CarComponent implements OnInit {
   }
   private getCarImagesDetailByBrandId(brandId:number){
     this.carService.getCarImagesDetailsByBrandId(brandId).subscribe((response)=>{
+      this.carImagesDetails = response.data
+      this.dataLoaded= true;
+    })
+  }
+  private getCarImagesDetailByColorIdAndBrandId(colorId:number,brandId:number){
+    this.carService.getCarImagesDetailsByColorIdAndBrandId(colorId,brandId).subscribe((response)=>{
       this.carImagesDetails = response.data
       this.dataLoaded= true;
     })
